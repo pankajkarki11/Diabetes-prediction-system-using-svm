@@ -1,0 +1,54 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div class="card shadow-lg w-100" style="max-width: 600px; height: 80vh;">
+        
+
+        <div class="card-body overflow-auto" id="messages-box" style="flex: 1;">
+            <ul class="list-unstyled" id="messages-list"></ul>
+        </div>
+
+        <div class="card-footer">
+            <form method="POST" id="chat-form" class="d-flex">
+                {% csrf_token %}
+                <input type="text" class="form-control me-2" id="message-input" placeholder="Type your message..." required>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.getElementById('chat-form').addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        const messageInput = document.getElementById('message-input');
+        const message = messageInput.value.trim();
+        if (!message) return;
+
+        const messagesList = document.getElementById('messages-list');
+        
+        // Append user message
+        messagesList.innerHTML += `<li class="text-end my-2"><span class="badge bg-success">${message}</span></li>`;
+        messageInput.value = '';
+
+        // Send request to backend
+        fetch('', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams({
+                'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                'message': message
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            messagesList.innerHTML += `<li class="text-start my-2"><span class="badge bg-secondary">${data.response}</span></li>`;
+            document.getElementById('messages-box').scrollTop = document.getElementById('messages-box').scrollHeight;
+        })
+        .catch(error => console.error(error));
+    });
+</script>
+{% endblock %}

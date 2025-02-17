@@ -1,0 +1,41 @@
+{% extends 'blogs/base.html' %}
+{% block content %}
+{% load crispy_forms_tags %}
+
+    <!--    <link rel="stylesheet" href="main.css">-->
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <div class="cardd" style="background-color: purple;">
+      <!-- <img src="img.jpg" alt="John" style="width:100%"> -->
+      <div class="m-b-25"> <img class="rounded-circle account-img" id="profile-img" src="{{ user.profile.image.url }}" class="img-radius" alt="User-Profile-Image"> </div>
+
+      <h1 id="profile-h1">{{user.username|title}}</h1>
+      <p class="title">{{user.email}}</p>
+      <a href="https://www.instagram.com/accounts/login/?next=https%3A%2F%2Fwww.instagram.com%2Fterms%2Faccept%2F%3F__coig_login%3D1"  target="_blank" id="auth-links"><i class="fa fa-instagram"></i></a>
+      <a href="https://x.com/i/flow/login" target="_blank" id="auth-links"><i class="fa fa-twitter"></i></a>
+      <a href="https://www.linkedin.com/authwall?trk=qf&original_referer=&sessionRedirect=https%3A%2F%2Fwww.linkedin.com%2Fjobs%2Fview%2F4038232257"  target="_blank" id="auth-links"><i class="fa fa-linkedin"></i></a>
+      <a href="https://www.facebook.com/?stype=lo&flo=1&deoia=1&jlou=Afc3TSpZMuU7OexLHTqNQx0rlzWEwIIMtVDwu24I53939pMk1Mn3SuULtZheQMQ4Z5f4uFRZtOlJFYR5YExb8UTHitXKOxdpZbWLYAmloinjKQ&smuh=46864&lh=Ac_7N1qJGOTyGeYiBfg"  target="_blank" id="auth-links"><i class="fa fa-facebook"></i></a>
+
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <fieldset class="form-group">
+<!--                <legend class="border-bottom mb-4">Join Today</legend>-->
+                {{ u_form|crispy }}
+                {{ p_form|crispy }}
+            </fieldset>
+<!--            <div class="form-group">-->
+<!--                <button class="btn btn-outline-info" type="submit">Update Profile</button>-->
+<!--            </div>-->
+        </form>
+
+      <p><button id="btn-profile"><a href="{% url 'profile-update' %}" id="auth-links">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        Update Profile
+    </a></button></p>
+    </div>
+{% endblock content %}

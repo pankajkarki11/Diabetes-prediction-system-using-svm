@@ -1,0 +1,139 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Risk Calculator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style6.css' %}">
+    <link rel="stylesheet" href="{% static 'style4.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-label {
+            font-size: 1.2rem;
+        }
+        .form-control {
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+        }
+        @media (max-width: 768px) {
+            .graphs-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+  <nav class="sidebar close">
+    <div class="menu-bar">
+        <div class="menu">
+            <ul class="menu-links">
+                <li class="nav-link">
+                    <a href="{% url 'bloghome' %}">
+                        <i class='bx bx-home-alt icon'></i>
+                        <span class="text nav-text">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'food_nutrition' %}">
+                        <i class='bx bx-dish icon'></i>
+                        <span class="text nav-text">Food Tracker</span>
+                    </a>
+                </li>
+                <li class="nav-link">
+                    <a href="{% url 'risk_calculator' %}">
+                        <i class='bx bx-calculator icon'></i>
+                        <span class="text nav-text">Risk Calculator</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+    <div class="container">
+        <div class="heading">
+            <h1>Calculate Your Diabetes Risk</h1>
+        </div>
+
+        <form method="POST">
+          {% csrf_token %}
+          <div class="form-group">
+              <label for="age">Age:</label>
+              <input type="number" id="age" name="age" class="form-control" required>
+          </div>
+          <div class="form-group">
+              <label for="bmi">BMI (Body Mass Index):</label>
+              <input type="number" step="0.1" id="bmi" name="bmi" class="form-control" required>
+          </div>
+          <div class="form-group">
+              <label for="family_history">Family History of Diabetes:</label>
+              <select id="family_history" name="family_history" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="physical_activity">Physical Activity Level:</label>
+              <select id="physical_activity" name="physical_activity" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="low">Low</option>
+                  <option value="moderate">Moderate</option>
+                  <option value="high">High</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="smoking">Do you smoke?</label>
+              <select id="smoking" name="smoking" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+              </select>
+          </div>
+          <div class="form-group">
+              <label for="alcohol_consumption">Do you consume alcohol?</label>
+              <select id="alcohol_consumption" name="alcohol_consumption" class="form-control" required>
+                  <option value="">Select</option>
+                  <option value="True">Yes</option>
+                  <option value="False">No</option>
+              </select>
+          </div>
+          <button type="submit" class="btn btn-primary">Calculate</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS, optional for some functionalities -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+{% extends 'blogs/base_contact.html' %}
+{% block content %}
+<style>
+ 
+  .profile-photo {
+      text-align: center;
+  }
+  .profile-photo img {
+      border-radius: 50%;
+      width: 150px;
+      height: 150px;
+  }
+  h1 {
+      text-align: center;
+      color: #007BFF;
+  }
+  .details,  .extra-details {
+      margin-top: 20px;
+  }
+  .details p,  .extra-details p{
+      margin: 10px 0;
+  }
+  .chat-button {
+      display: flex;
+      justify-content: center;
+      margin-top: 30px;
+  }
+  .chat-button button {
+      background-color: #007BFF;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  .chat-button button:hover {
+      background-color: #0056b3;
+  }
+</style>
+<div class="container">
+  <div class="profile-photo" class="my-3">
+      <img src="https://static.vecteezy.com/system/resources/thumbnails/027/298/490/small/doctor-posing-portrait-free-photo.jpg" alt="Dr. John Doe">
+  </div>
+  <h1>Dr. John Doe</h1>
+  <div class="details">
+      <p><strong>Specialization:</strong> Endocrinologist & Diabetes Specialist</p>
+      <p><strong>Experience:</strong> Over 15 years in treating diabetes and related conditions.</p>
+      <p><strong>Education:</strong> MD in Endocrinology, Harvard Medical School</p>
+      <p><strong>Achievements:</strong></p>
+      <ul>
+          <li>Published 20+ research papers on diabetes management.</li>
+          <li>Recipient of the Best Diabetes Care Award, 2020.</li>
+          <li>Keynote speaker at the International Diabetes Conference.</li>
+      </ul>
+      <p><strong>Areas of Expertise:</strong></p>
+      <ul>
+        <li>Type 1 and Type 2 Diabetes Management</li>
+        <li>Gestational Diabetes Care</li>
+        <li>Insulin Pump Therapy</li>
+        <li>Diabetic Neuropathy and Retinopathy</li>
+        <li>Weight Management and Lifestyle Counseling</li>
+    </ul>
+    <p><strong>Languages Spoken:</strong> English, Spanish, French</p>
+      <p><strong>Clinic Address:</strong> 
+          Diabetes Care Center, 
+          Bhaisepati,
+          Lalitpur
+      </p>
+      <p><strong>Contact:</strong> +977 9851011111 | <a href="mailto:dr.john.doe@example.com">dr.john.doe@gmail.com</a></p>
+      <p><strong>Consultation Hours:</strong> Monday - Friday, 9:00 AM - 5:00 PM</p>
+  </div>
+  <div class="extra-details">
+    <h2>Memberships and Accreditations</h2>
+    <ul>
+        <li>American Diabetes Association (ADA)</li>
+        <li>International Diabetes Federation (IDF)</li>
+        <li>Board Certified in Endocrinology</li>
+    </ul>
+    <h2 class="my-3">Patient Testimonials</h2>
+    <p>"Dr. Doe has been a lifesaver! His personalized care and advice have significantly improved my health." - Jane D.</p>
+    <p>"Thanks to Dr. Doe, I finally feel in control of my diabetes. Highly recommend!" - Michael B.</p>
+    <p>"Dr. Doe's approach is both professional and compassionate. He took the time to explain my condition and the steps I needed to take for better health."- Sarah L.</p>
+    <p>"I had been struggling with diabetes for years until I met Dr. Doe. His expertise and personalized care plan changed my life for the better." - Alex R.</p>
+    <p>"From the very first consultation, I knew I was in good hands. Dr. Doe genuinely cares about his patients and goes above and beyond."  - Emma T.</p>
+</div>
+  <div class="chat-button">
+        <a href="{% url 'create-room' %}">
+      <button>Chat with Dr. John Doe</button></a>
+  </div>
+</div>
+{% endblock %}

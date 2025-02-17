@@ -1,0 +1,125 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<style>
+    /* Container for the chat rooms */
+    .chat-rooms-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        background-color: #f5f5f5;
+    }
+
+    /* Header */
+    .chat-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 10px;
+        background-color: #0078d4;
+        color: white;
+        font-size: 24px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* Search bar */
+    .search-bar {
+        width: 100%;
+        max-width: 500px;
+        padding: 10px;
+        border-radius: 20px;
+        border: 1px solid #ccc;
+        margin-bottom: 20px;
+        font-size: 16px;
+    }
+
+    /* Chat room list */
+    .room-list {
+        width: 100%;
+        max-width: 500px;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .room-list li {
+        display: flex;
+        align-items: center;
+        padding: 15px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        margin-bottom: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    .room-list li:hover {
+        background-color: #f1f1f1;
+    }
+
+    /* Avatar for each room */
+    .room-avatar {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #0078d4;
+        margin-right: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Room name and last message */
+    .room-details {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .room-name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+    }
+
+    .last-message {
+        font-size: 14px;
+        color: #888;
+    }
+</style>
+
+<div class="chat-rooms-container">
+    <!-- Header -->
+    <div class="chat-header">
+        <div>Chat</div>
+        <div><i class="fas fa-cogs"></i></div>  <!-- Optional settings icon -->
+    </div>
+
+
+    <!-- Chat rooms list -->
+    <ul class="room-list">
+        {% for room in rooms %}
+            <li>
+                <!-- Wrap each room in a clickable link -->
+                <a href="{% url 'room' room.slug %}" style="display: flex; width: 100%; text-decoration: none; color: inherit;">
+                    <!-- Room Avatar -->
+                    <div class="room-avatar">
+                        {{ room.name|slice:":1" }}
+                    </div>
+
+                    <!-- Room Details -->
+                    <div class="room-details">
+                        <div class="room-name">{{ room.name }}</div>
+                        <div class="last-message">Last message preview...</div>  <!-- Replace with actual last message -->
+                    </div>
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<div class="container" style="background-color: white; padding: 20px; margin-top: 10px; border-radius: 15px;">
+    <div id="accordion">
+        <div class="card">
+            <div class="card-header" id="headingOne" style="background-color: black;">
+                <h5 class="mb-0">
+                    <button class="btn btn-link text-white" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        About The Project
+                    </button>
+                </h5>
+            </div>
+
+            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                <div class="card-body">
+                    Sugarcare provides users with health insights and recommendations. The app predicts the likelihood of diabetes based on user input, and offers personalized suggestions for medications, exercises, diet plans, and nearby hospitals. This project integrates machine learning for prediction with health and wellness recommendations to promote better management and awareness of diabetes.
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header" id="headingTwo" style="background-color: black;">
+                <h5 class="mb-0">
+                    <button class="btn btn-link collapsed text-white" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        About the Team
+                    </button>
+                </h5>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div class="card-body">
+                    SugarCare team has 4 members: Deephang, Dipesh, Esparsh and Pankaj. Each team member has made significant contributions to the app.
+                </div>
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+{% endblock %}

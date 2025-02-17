@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Diabetes Risk Score</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'style6.css' %}">
+    <link rel="stylesheet" href="{% static 'style4.css' %}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fa;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: 50px auto;
+        }
+        .heading {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .result {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.05);
+            margin-top: 20px;
+        }
+        .btn-secondary {
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            display: inline-block;
+            margin-top: 20px;
+        }
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="heading">
+            <h2>Your Diabetes Risk Score</h2>
+        </div>
+        <div class="result">
+            <p>Your calculated risk score is: <strong>{{ risk_score }}</strong></p>
+            <p>
+                <strong>Risk Categories:</strong><br>
+                - 0 to 3: Low Risk<br>
+                - 4 to 6: Moderate Risk<br>
+                - 7 and above: High Risk
+            </p>
+            <a href="{% url 'risk_calculator' %}" class="btn btn-secondary">Calculate Again</a>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<style>
+    /* Chat container */
+    #chat-container {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        background-color: #f9f9f9;
+        display: flex;
+        flex-direction: column; /* Messages should stack vertically */
+        height: 500px;
+        overflow-y: auto; /* Scroll when necessary */
+    }
+
+    .message {
+        max-width: 70%;
+        margin: 5px 10px; /* Adjusted for better spacing */
+        padding: 10px;
+        border-radius: 10px;
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    .message.sender {
+        background-color: #d1f7c4;
+        align-self: flex-end;
+    }
+
+    .message.receiver {
+        background-color: #e6e6e6;
+        align-self: flex-start;
+    }
+
+    /* Chat input container */
+    #chat-input-container {
+        display: flex;
+        flex-direction: column; /* Stack input field and button vertically */
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    /* Adjust the message input field size */
+    #chat-message-input {
+        width: 100%; /* Make it take the full width */
+        padding: 15px; /* Increased padding for more space */
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px; /* Larger font size */
+        height: 60px; /* Increased height for a bigger input area */
+        resize: none; /* Prevent resizing */
+    }
+
+    /* Adjust the button size */
+    #chat-message-submit {
+        margin-top: 10px; /* Add space between input field and button */
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        background: linear-gradient(to right, #7f00ff, #e100ff);
+        color: white;
+        font-size: 14px;
+        cursor: pointer;
+    }
+
+    #chat-message-submit:hover {
+        background: linear-gradient(to right, #6a00cc, #c700cc);
+    }
+</style>
+
+<div id="chat-container">
+    {% for message in messages %}
+        <div class="message {% if message.username == request.user.username %}sender{% else %}receiver{% endif %}">
+            <b>{{ message.username }}</b> {{ message.text }}
+        </div>
+    {% endfor %}
+</div>
+
+<div id="chat-input-container">
+    <textarea id="chat-message-input" placeholder="Type your message here..."></textarea>
+    <button id="chat-message-submit">Send</button>
+</div>
+
+<script>
+    const roomName = "{{ room.slug }}";
+    const chatSocket = new WebSocket(
+        (window.location.protocol === 'https:' ? 'wss://' : 'ws://') +
+        window.location.host +
+        '/ws/' + roomName + '/'
+    );
+
+    chatSocket.onmessage = function(e) {
+        const data = JSON.parse(e.data);
+        const chatContainer = document.querySelector('#chat-container');
+        const messageBubble = document.createElement('div');
+        messageBubble.classList.add('message');
+
+        // Distinguish between sender and receiver
+        if (data.username === '{{ request.user.username }}') {
+            messageBubble.classList.add('sender');
+        } else {
+            messageBubble.classList.add('receiver');
+        }
+
+        messageBubble.innerHTML = '<b>' + data.username + '</b> ' + data.message;
+        chatContainer.appendChild(messageBubble);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Auto-scroll
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('WebSocket closed unexpectedly');
+    };
+
+    document.querySelector('#chat-message-submit').onclick = function(e) {
+        const messageInput = document.querySelector('#chat-message-input');
+        const message = messageInput.value.trim();
+
+        if (message) {
+            chatSocket.send(JSON.stringify({
+                'message': message,
+                'username': '{{ request.user.username }}',
+                'room': roomName
+            }));
+            messageInput.value = '';
+        }
+    };
+
+    document.querySelector('#chat-message-input').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            document.querySelector('#chat-message-submit').click();
+        }
+    });
+</script>
+{% endblock %}

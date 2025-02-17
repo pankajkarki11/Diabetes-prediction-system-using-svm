@@ -1,0 +1,125 @@
+{% extends 'blogs/base_contact.html' %}
+
+{% block content %}
+<div class="main my-3">
+  <h1>Diabetes Prediction Test</h1>
+  
+  {% if result %}
+  <div class="alert {% if result == 'Positive' %}alert-danger{% else %}alert-success{% endif %} fade show" role="alert">
+    <h4 class="alert-heading">Prediction: {{ result }}
+      {% if confidence %}<small>({{ confidence }} confidence)</small>{% endif %}
+    </h4>
+    {% if result == 'Positive' %}
+    <hr>
+    <p class="mb-0">Consult a healthcare professional for proper diagnosis and management.</p>
+    {% endif %}
+  </div>
+  {% elif error %}
+  <div class="alert alert-warning">{{ error }}</div>
+  {% endif %}
+
+  <form action="result" method="post" id="diabetesForm" novalidate>
+    {% csrf_token %}
+
+    <div class="form-group my-3">
+      <label for="n1">Gender</label>
+      <select class="form-control" name="n1" id="n1" required>
+        <option value="female">Female</option>
+        <option value="male">Male</option>
+      </select>
+    </div>
+
+    <div class="form-group my-3">
+      <label for="n5">Smoking History</label>
+      <select class="form-control" name="n5" id="n5" required>
+        <option value="never">Never Smoked</option>
+        <option value="former">Former Smoker</option>
+        <option value="current">Current Smoker</option>
+        <option value="unknown">Unknown</option>
+        <option value="no_info">No Information</option>
+      </select>
+    </div>
+
+    <div class="form-group my-3">
+      <label for="n2">Age (Years)</label>
+      <input type="number" class="form-control" name="n2" id="n2" min="0.1" step="0.1" required>
+      <div class="invalid-feedback">Age must be between 0.1 and 120 years.</div>
+    </div>
+
+    <div class="form-group my-3">
+      <label for="n6">BMI</label>
+      <input type="number" class="form-control" name="n6" id="n6" min="10" max="70" step="0.1" required>
+      <div class="invalid-feedback">BMI should be between 10 and 70.</div>
+    </div>
+
+    <div class="form-group my-3">
+      <label for="n7">HbA1c Level (%)</label>
+      <input type="number" class="form-control" name="n7" id="n7" min="3" max="15" step="0.1" required>
+      <div class="invalid-feedback">HbA1c should be between 3% and 15%.</div>
+    </div>
+
+    <div class="form-group my-3">
+      <label for="n8">Blood Glucose Level (mg/dL)</label>
+      <input type="number" class="form-control" name="n8" id="n8" min="50" max="400" step="1" required>
+      <div class="invalid-feedback">Glucose levels should be between 50 and 400 mg/dL.</div>
+    </div>
+
+    <div class="row my-3">
+      <div class="col-md-6">
+        <label for="n3">Hypertension</label>
+        <select class="form-control" name="n3" id="n3">
+          <option value="1">Yes</option>
+          <option value="0" selected>No</option>
+        </select>
+      </div>
+      <div class="col-md-6">
+        <label for="n4">Heart Disease</label>
+        <select class="form-control" name="n4" id="n4">
+          <option value="1">Yes</option>
+          <option value="0" selected>No</option>
+        </select>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary my-3" id="submitBtn">Predict Diabetes Risk</button>
+  </form>
+</div>
+
+<script>
+document.getElementById("diabetesForm").addEventListener("submit", function(e) {
+  let valid = true;
+  document.querySelectorAll('.is-invalid').forEach(el => el.classList.remove('is-invalid'));
+  
+  const validate = (id, min, max, message) => {
+    const field = document.getElementById(id);
+    const value = parseFloat(field.value);
+    const feedback = field.nextElementSibling;
+
+    if (isNaN(value) || value < min || value > max) {
+      field.classList.add('is-invalid');
+      feedback.textContent = message;
+      valid = false;
+    } else {
+      field.classList.remove('is-invalid');
+      feedback.textContent = "";
+    }
+  };
+
+  validate('n2', 0.1, 120, "Age must be between 0.1 and 120 years.");
+  validate('n6', 10, 70, "BMI should be between 10 and 70.");
+  validate('n7', 3, 15, "HbA1c should be between 3% and 15%.");
+  validate('n8', 50, 400, "Glucose levels should be between 50 and 400 mg/dL.");
+
+  if (!valid) {
+    e.preventDefault();
+  } else {
+    document.getElementById("submitBtn").innerHTML = "Processing...";
+  }
+});
+</script>
+
+<style>
+.is-invalid { border-color: red; }
+</style>
+
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="yoga-container">
+  <div class="pose">
+    <p class="pose-title">1. Ardha Halasana</p>
+    <video class="pose-video" src="{% static 'exercises/v1.mp4' %}" controls></video>
+    <p class="pose-description">Lie on your back and slowly raise your legs to a 90-degree angle. Breathe deeply while holding the position. Helps improve blood circulation and core strength.</p>
+  </div>
+  <div class="pose">
+    <p class="pose-title">2. Savasana</p>
+    <video class="pose-video" src="{% static 'exercises/v2.mp4' %}" controls></video>
+    <p class="pose-description">Lie flat on your back with your arms relaxed at your sides. Focus on your breathing to relax the body and mind completely.</p>
+  </div>
+  <div class="pose">
+    <p class="pose-title">3. Ardha Sirsana</p>
+    <video class="pose-video" src="{% static 'exercises/v3.mp4' %}" controls></video>
+    <p class="pose-description">Begin in a kneeling position and slowly raise your hips while supporting your head with your hands. This pose strengthens the upper body and improves balance.</p>
+  </div>
+  <div class="pose">
+    <p class="pose-title">4. Ardha Sarvangasana</p>
+    <video class="pose-video" src="{% static 'exercises/v4.mp4' %}" controls></video>
+    <p class="pose-description">Lie on your back and lift your hips and legs, supporting your lower back with your hands. Focus on keeping the body aligned and breathing deeply.</p>
+  </div>
+  <div class="pose">
+    <p class="pose-title">5. Paschimattanasana</p>
+    <video class="pose-video" src="{% static 'exercises/v5.mp4' %}" controls></video>
+    <p class="pose-description">Sit with your legs stretched out and bend forward to touch your toes. This pose stretches the spine and hamstrings, improving flexibility.</p>
+  </div>
+  <div class="pose">
+    <p class="pose-title">6. Balasana</p>
+    <video class="pose-video" src="{% static 'exercises/v6.mp4' %}" controls></video>
+    <p class="pose-description">Sit back on your heels and stretch your arms forward while lowering your chest. This pose relieves stress and improves spinal flexibility.</p>
+  </div>
+</div>
+{% endblock content %}

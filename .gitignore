@@ -1,0 +1,13 @@
+# Ignore the virtual environment directory
+venv/
+
+# Ignore .git directory (automatically handled by Git but it's good to specify)
+.git/
+
+# Ignore any Python bytecode files
+*.pyc
+*.pyo
+
+# Ignore logs, temporary files, etc.
+*.log
+*.tmp

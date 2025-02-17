@@ -1,0 +1,17 @@
+{% extends 'blogs/base.html' %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h2 class="mb-4">Diabetes & Foot Ulcer Testing</h2>
+
+    <div class="d-flex flex-column align-items-center">
+        <a href="{% url 'ulcer_detection' %}" class="btn btn-primary btn-lg mb-3 w-50 shadow-sm">
+            Test Diabetes Foot Ulcer
+        </a>
+
+        <a href="{% url 'test' %}" class="btn btn-success btn-lg w-50 shadow-sm">
+            Test Diabetes
+        </a>
+    </div>
+</div>
+{% endblock %}

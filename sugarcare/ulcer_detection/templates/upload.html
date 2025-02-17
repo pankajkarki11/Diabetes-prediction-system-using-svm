@@ -1,0 +1,51 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+
+{% block title %}Foot Ulcer Detection{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center">Foot Ulcer Detection</h2>
+    
+    
+    <div class="mb-4">
+        <p class="lead">
+            A foot ulcer is an open wound or sore that can develop on the feet. These ulcers are commonly found on the bottom or top of the feet and can often be caused by various health conditions, including diabetes, poor circulation, or nerve damage.
+        </p>
+        <p>
+            People with diabetes are at higher risk due to nerve damage (neuropathy) that decreases sensitivity in the feet. Without feeling pain or discomfort, a person might not notice a wound or ulcer developing, allowing it to worsen. Poor circulation can also hinder healing, which can lead to infection and, in severe cases, require amputation if not addressed early.
+        </p>
+        <p>
+            It's essential to monitor your feet regularly for any signs of damage, such as blisters, cuts, or sores. Early detection can help prevent severe complications.
+        </p>
+        <p>
+            Our foot ulcer detection tool allows you to upload an image of your foot and receive instant results on whether an ulcer is present, helping you take timely action. Please upload a clear image of the affected area for the best results.
+        </p>
+    </div>
+    
+    <div class="text-center mb-5">
+        <h4>Examples of Foot Ulcers</h4>
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <img src="{% static 'examples/positive ulcer.jpg' %}" alt="Example of a foot ulcer" class="img-fluid" style="max-width: 100%;">
+                <p>Example 1: A diabetic foot ulcer caused by neuropathy.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src= "{% static 'examples/ex2.jpg' %}" alt="Example of a foot ulcer" class="img-fluid" style="max-width: 100%;">
+                <p>Example 2: An ulcer resulting from poor circulation and pressure.</p>
+            </div>
+            <div class="col-md-4 mb-3">
+                <img src="{% static 'examples/ex3.jpg' %}" alt="Example of a foot ulcer" class="img-fluid" style="max-width: 100%;">
+                <p>Example 3: Severe foot ulcer requiring medical attention.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form to upload foot image -->
+    <form action="" method="POST" enctype="multipart/form-data" class="mt-4 text-center">
+        {% csrf_token %}
+        <input type="file" name="image" required class="form-control mb-3">
+        <button type="submit" class="btn btn-primary">Upload & Detect</button>
+    </form>
+</div>
+{% endblock %}

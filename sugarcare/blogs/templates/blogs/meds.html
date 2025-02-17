@@ -1,0 +1,137 @@
+{% extends 'blogs/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="modal fade" id="warningModal" tabindex="-1" aria-labelledby="warningModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+          <div class="modal-header">
+              <h5 class="modal-title" id="warningModalLabel">Important Medical Disclaimer</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+              </button>
+          </div>
+          <div class="modal-body">
+              <p>Please consult your healthcare provider before taking any of the medications listed on this page. Self-medication can be dangerous.</p>
+          </div>
+          <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-dismiss="modal">I Understand</button>
+          </div>
+      </div>
+  </div>
+</div>
+
+<header class="bg-primary text-white text-center py-3">
+  <h1>Diabetes Medications</h1>
+  <p class="lead">A list of medications commonly used for managing diabetes</p>
+</header>
+
+<section class="container my-5">
+  <div class="row">
+
+      <div class="col-md-4 mb-4">
+          <div class="card medication-card">
+              <img src="{% static 'meds/metformin.jpg' %}" class="card-img-top" alt="Metformin">
+              <div class="card-body">
+                  <h5 class="card-title">Metformin (Biguanide)</h5>
+                  <p class="card-text">Metformin is an FDA-approved antidiabetic agent that manages high blood sugar levels in type 2 diabetes patients... </p>
+                  <a href="https://www.webmd.com/drugs/2/drug-11285/metformin-oral/details" target="_blank" class="btn btn-primary">Read More</a>
+              </div>
+          </div>
+      </div>
+      <div class="col-md-4 mb-4">
+        <div class="card medication-card">
+            <img src="{% static 'meds/glimepiride.jpg' %}" class="card-img-top" alt="Metformin">
+            <div class="card-body">
+                <h5 class="card-title">Glimepiride</h5>
+                <p class="card-text">Glimepiride is an oral diabetes medicine that is used together with diet and exercise to improve blood sugar control in adults with type 2 diabetes mellitus...</p>
+                <a href="https://www.drugs.com/search.php?searchterm=Glimepiride" target="_blank" class="btn btn-primary">Read More</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+      <div class="card medication-card">
+          <img src="{% static 'meds/glipizide.jpg' %}" class="card-img-top" alt="Metformin">
+          <div class="card-body">
+              <h5 class="card-title">Glipizide</h5>
+              <p class="card-text">Glipizide is an oral diabetes medicine that helps control blood sugar levels by helping your pancreas produce insulin...</p>
+              <a href="https://www.drugs.com/search.php?searchterm=Glipizide" target="_blank" class="btn btn-primary">Read More</a>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-4 mb-4">
+    <div class="card medication-card">
+        <img src="{% static 'meds/sitagliptin.jpg' %}" class="card-img-top" alt="Metformin">
+        <div class="card-body">
+            <h5 class="card-title">Sitagliptin</h5>
+            <p class="card-text">Sitagliptin is used with diet and exercise to improve blood sugar control in adults with type 2 diabetes mellitus (not for type 1 diabetes)...</p>
+            <a href="https://www.drugs.com/search.php?searchterm=Sitagliptin" target="_blank" class="btn btn-primary">Read More</a>
+        </div>
+    </div>
+</div>
+<div class="col-md-4 mb-4">
+  <div class="card medication-card">
+      <img src="{% static 'meds/liraglutide.jpg' %}" class="card-img-top" alt="Metformin">
+      <div class="card-body">
+          <h5 class="card-title">Liraglutide</h5>
+          <p class="card-text">The Victoza brand of liraglutide is used together with diet and exercise to improve blood sugar control in adults and children who have type 2 diabetes mellitus.</p>
+          <a href="https://www.drugs.com/search.php?searchterm=Liraglutide" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+  </div>
+</div>
+<div class="col-md-4 mb-4">
+  <div class="card medication-card">
+      <img src="{% static 'meds/canagliflozin.jpg' %}" class="card-img-top" alt="Metformin">
+      <div class="card-body">
+          <h5 class="card-title">Canagliflozin</h5>
+          <p class="card-text">Canagliflozin is used together with diet and exercise to improve blood sugar control in adults with type 2 diabetes mellitus . . .</p>
+          <a href="https://www.drugs.com/search.php?searchterm=Canagliflozin" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+  </div>
+</div>
+<div class="col-md-4 mb-4">
+  <div class="card medication-card">
+      <img src="{% static 'meds/pia.jpg' %}" class="card-img-top" alt="Metformin">
+      <div class="card-body">
+          <h5 class="card-title">Pioglitazone</h5>
+          <p class="card-text">Pioglitazone is used together with diet and exercise to improve blood sugar control in adults with type 2 diabetes mellitus . . . </p>
+          <a href="https://www.drugs.com/search.php?searchterm=Pioglitazone" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+  </div>
+</div>
+<div class="col-md-4 mb-4">
+  <div class="card medication-card">
+      <img src="{% static 'meds/metformin.jpg' %}" class="card-img-top" alt="Metformin">
+      <div class="card-body">
+          <h5 class="card-title">Metformin (Biguanide)</h5>
+          <p class="card-text">Metformin is the first-line medication for the treatment of type 2 diabetes. It helps lower glucose production in the liver...</p>
+          <a href="https://www.webmd.com/drugs/2/drug-11285/metformin-oral/details" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+  </div>
+</div>
+<div class="col-md-4 mb-4">
+  <div class="card medication-card">
+      <img src="{% static 'meds/metformin.jpg' %}" class="card-img-top" alt="Metformin">
+      <div class="card-body">
+          <h5 class="card-title">Metformin (Biguanide)</h5>
+          <p class="card-text">Metformin is the first-line medication for the treatment of type 2 diabetes. It helps lower glucose production in the liver...</p>
+          <a href="https://www.webmd.com/drugs/2/drug-11285/metformin-oral/details" target="_blank" class="btn btn-primary">Read More</a>
+      </div>
+  </div>
+</div>
+
+
+  </div>
+</section>
+<hr>
+<button class="primary primary-btn"><a href="{% url 'exercise' %}"> Exercises</a></button>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  $(document).ready(function() {
+    $('#warningModal').modal('show'); 
+  });
+</script>
+
+{% endblock %}

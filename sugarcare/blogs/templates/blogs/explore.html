@@ -1,0 +1,145 @@
+{% extends 'blogs/base_contact.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  .carousel-item img {
+    width: 100%; 
+    max-width: 1200px;
+    max-height: 1200px;
+    height: 400px; 
+    object-fit: cover; /
+  }
+  .carousel-item img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+  }
+</style>
+
+  <div class="container my-5">
+    <h3 class="text-center mb-4">Upcoming Events</h3>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card my-3" style="background-color: #D8F3DC;">
+          <div class="card-body">
+            <h4 class="card-title">Diabetes Care Webinar</h4>
+            <small class="text-muted">October 15</small>
+            <p class="card-text">Join us for a webinar on diabetes self-management.</p>
+            <p class="my-1">This event aims to educate people on how to take control of their diabetes through self-management techniques. Topics could include monitoring blood sugar levels, proper medication, diet, exercise, and mental health. Attendees will gain practical strategies to manage their condition effectively.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card my-3" style="background-color: #D8F3DC;">
+          <div class="card-body">
+            <h4 class="card-title">Free Health Checkup</h4>
+            <small class="text-muted">December 1</small>
+            <p class="card-text">Free health checkup for elderly at Sanepa 'Swasthya Chowki'.</p>
+            <p class="my-1">The event offers a free health screening for elderly individuals, targeting common age-related health conditions like diabetes, hypertension, and cholesterol levels. This helps in early detection and management of such diseases to prevent complications.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card my-3" style="background-color: #D8F3DC;">
+          <div class="card-body">
+            <h4 class="card-title">Healthy Living Workshop</h4>
+            <small class="text-muted">October 20</small>
+            <p class="card-text">A workshop to learn about healthy living with diabetes.</p>
+            <p class="my-1">This workshop will focus on lifestyle adjustments crucial for people with diabetes. Participants will learn about a balanced diet, incorporating exercise into daily routines, and maintaining emotional well-being while managing diabetes. Experts will provide tools and resources to help improve health outcomes.</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <div class="card my-3" style="background-color: #D8F3DC;">
+          <div class="card-body">
+            <h4 class="card-title">Nutrition Counseling</h4>
+            <small class="text-muted">December 5</small>
+            <p class="card-text">Get expert advice on a balanced diet for managing diabetes.</p>
+            <p class="my-1">This session provides one-on-one or group counseling with a nutrition expert who will guide participants on how to balance macronutrients (proteins, fats, carbs) while managing diabetes. It will offer personalized meal plans and tips to stabilize blood sugar levels through diet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card my-3" style="background-color: #D8F3DC;">
+          <div class="card-body">
+            <h4 class="card-title">Fitness for Diabetics</h4>
+            <small class="text-muted">December 10</small>
+            <p class="card-text">Learn exercise routines designed for diabetic patients.</p>
+            <p class="my-1">This event focuses on fitness programs tailored for diabetics. Participants will learn safe exercises that improve insulin sensitivity, aid in weight management, and help in controlling blood sugar levels. Sessions may include light cardio, strength training, and stretching exercises.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container my-5">
+    <h3 class="text-center mb-4">Health Tips</h3>
+
+    <div id="healthTipsCarousel" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <div class="my-3">
+            <h4>Tip #1: Monitor Blood Sugar Regularly</h4>
+            <p>Regular monitoring of blood glucose levels is essential to managing diabetes.</p>
+            <img src="{% static 'health_tips/1.jpg' %}" class="d-block" alt="Monitor Blood Sugar">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="my-3">
+            <h4>Tip #2: Eat a Balanced Diet</h4>
+            <p>Ensure your meals include a mix of protein, healthy fats, and fiber-rich carbs.</p>
+            <img src="{% static 'health_tips/2.png' %}" class="d-block" alt="Eat a Balanced Diet">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="my-3">
+            <h4>Tip #3: Stay Active</h4>
+            <p>Regular physical activity helps control blood sugar levels and boosts overall health.</p>
+            <img src="{% static 'health_tips/3.jpeg' %}" class="d-block" alt="Stay Active">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="my-3">
+            <h4>Tip #4: Stay Hydrated</h4>
+            <p>Drink plenty of water to help regulate blood sugar levels and prevent dehydration.</p>
+            <img src="{% static 'health_tips/4.png' %}" class="d-block" alt="Stay Hydrated">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="my-3">
+            <h4>Tip #5: Get Enough Sleep</h4>
+            <p>Adequate sleep is crucial in managing blood sugar levels and overall health.</p>
+            <img src="{% static 'health_tips/5.jpg' %}" class="d-block" alt="Get Enough Sleep">
+          </div>
+        </div>
+        <div class="carousel-item">
+          <div class="my-3">
+            <h4>Tip #6: Manage Stress</h4>
+            <p>Stress can affect blood sugar. Practice relaxation techniques like meditation.</p>
+            <img src="{% static 'health_tips/6.png' %}" class="d-block" alt="Get Enough Sleep">
+          </div>
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#healthTipsCarousel" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#healthTipsCarousel" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+
+ 
+{% endblock %}
